@@ -11,6 +11,10 @@ import { DocumentsComponent } from './result/documents/documents.component';
 import { DetailsComponent } from './result/details/details.component';
 import { NavComponent } from './layout/nav/nav.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { SingleFilterComponent } from './filter/single-filter/single-filter.component';
+import { EdcaUrlSerializer, EndecapodService } from '@ibfd/endecapod';
+import { HttpClientModule } from '@angular/common/http';
+import { FilterExposeService, FilterOptionService } from './service/filter-option.service';
 
 
 @NgModule({
@@ -20,7 +24,8 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
     DocumentsComponent,
     DetailsComponent,
     NavComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    SingleFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -28,9 +33,14 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
     BrowserAnimationsModule,
     DropdownModule,
     FormsModule,
-    TabsModule
+    TabsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [EndecapodService,
+  EdcaUrlSerializer,
+  FilterOptionService,
+  FilterExposeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
